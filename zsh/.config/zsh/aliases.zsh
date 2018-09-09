@@ -1,0 +1,1 @@
+alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
