@@ -1,0 +1,32 @@
+[user]
+    name = Gianni Van Hoecke
+    email = gianni@giannivanhoecke.com
+    signingkey = A4AE1D7241766061
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+[commit]
+    gpgsign = true
+    template = ~/.gitcommit_template
+[gpg]
+    program = gpg2
+[push]
+    default = simple
+[alias]
+    siglog = log --show-signature
+    st = status
+    sts = status --short
+    co = checkout
+    br = branch
+    ci = commit
+    ca = commit -a
+    am = commit --amend
+    last = log -1 HEAD
+    ls = log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --show-signature --decorate
+    g = log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --show-signature --decorate --graph
+    ri = rebase -i
+    rc = rebase --continue
+    ra = rebase --abort
+    cp = cherry-pick
+[rerere]
+    enabled = true
