@@ -20,7 +20,7 @@
     br = branch
     ci = commit
     ca = commit -a
-    am = commit --amend
+    cam = commit --amend
     last = log -1 HEAD
     ls = log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --show-signature --decorate
     g = log --pretty=format:\"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --show-signature --decorate --graph
