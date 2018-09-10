@@ -1,0 +1,13 @@
+session_name: workspace
+start_directory: '~'
+windows:
+  - window_name: journal
+    panes:
+      - shell_command: 
+          - joplin
+  - window_name: cli
+    panes:
+      - shell_command: 
+          - screenfetch
+        focus: true
+    focus: true

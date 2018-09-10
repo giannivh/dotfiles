@@ -1,0 +1,13 @@
+session_name: mail
+start_directory: '~'
+windows:
+  - window_name: offlineimap
+    panes:
+      - shell_command: 
+          - offlineimap
+  - window_name: mutt
+    panes:
+      - shell_command: 
+          - neomutt
+        focus: true
+    focus: true
