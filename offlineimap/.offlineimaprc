@@ -1,0 +1,150 @@
+[general]
+pythonfile = ~/.offlineimap.py
+accounts = Personal,Work,MailingList
+maxsyncaccounts = 3
+
+
+
+#
+# PERSONAL ACCOUNT
+#
+
+
+
+[Account Personal]
+localrepository = personal-local
+remoterepository = personal-remote
+# full refresh, in min
+autorefresh = 0.2
+# quick refreshs between each full refresh
+quick = 3
+# update notmuch index after sync
+postsynchook = notmuch new
+
+
+
+[Repository personal-local]
+type = Maildir
+localfolders = ~/mail/personal
+# delete remote mails that were deleted locally
+sync_deletes = yes
+nametrans = lambda folder: re.sub('_', ' ', folder)
+
+
+
+[Repository personal-remote]
+type = IMAP
+remotehost = 127.0.0.1
+remoteport = 1143
+remoteusereval = mailuser("personal")
+remotepasseval = mailpass("personal")
+keepalive = 60
+holdconnectionopen = yes
+# delete local mails that were deleted on the remote server
+expunge = yes
+# is broken, but connecting locally to ProtonMail bridge should be ok
+ssl = no
+nametrans = lambda folder: re.sub(' ', '_', folder)
+
+
+
+#
+# WORK ACCOUNT
+#
+
+
+
+[Account Work]
+localrepository = work-local
+remoterepository = work-remote
+# full refresh, in min
+autorefresh = 0.2
+# quick refreshes between each full refresh
+quick = 10
+# update notmuch index after sync
+postsynchook = notmuch new
+
+
+
+[Repository work-local]
+type= Maildir
+localfolders = ~/mail/work
+# delete remote mails that were deleted locally
+sync_deletes = yes
+nametrans = lambda folder: {'Drafts':   '[Gmail]/Drafts',
+                            'Sent':     '[Gmail]/Sent Mail',
+                            'Important':'[Gmail]/Important',
+                            'Spam':     '[Gmail]/Spam',
+                            'Starred':  '[Gmail]/Starred',
+                            'Trash':    '[Gmail]/Trash',
+                            'Archive':  '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+
+
+[Repository work-remote]
+type = Gmail
+remoteusereval = mailuser("work")
+remotepasseval = mailpass("work")
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
+                            '[Gmail]/Sent Mail': 'Sent',
+                            '[Gmail]/Starred':   'Starred',
+                            '[Gmail]/Important': 'Important',
+                            '[Gmail]/Spam':      'Spam',
+                            '[Gmail]/Trash':     'Trash',
+                            '[Gmail]/All Mail':  'Archive',
+                            }.get(folder, folder)
+
+
+
+#
+# MAILING LIST ACCOUNT
+#
+
+
+
+[Account MailingList]
+localrepository = mailinglist-local
+remoterepository = mailinglist-remote
+# full refresh, in min
+autorefresh = 0.2
+# quick refreshes between each full refresh
+quick = 10
+# update notmuch index after sync
+postsynchook = notmuch new
+
+
+
+[Repository mailinglist-local]
+type= Maildir
+localfolders = ~/mail/mailinglist
+# delete remote mails that were deleted locally
+sync_deletes = yes
+nametrans = lambda folder: {'Drafts':   '[Gmail]/Drafts',
+                            'Sent':     '[Gmail]/Sent Mail',
+                            'Important':'[Gmail]/Important',
+                            'Spam':     '[Gmail]/Spam',
+                            'Starred':  '[Gmail]/Starred',
+                            'Trash':    '[Gmail]/Trash',
+                            'Archive':  '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+
+
+[Repository mailinglist-remote]
+type = Gmail
+remoteusereval = mailuser("mailinglist")
+remotepasseval = mailpass("mailinglist")
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+nametrans = lambda folder: {'[Gmail]/Drafts':    'Drafts',
+                            '[Gmail]/Sent Mail': 'Sent',
+                            '[Gmail]/Starred':   'Starred',
+                            '[Gmail]/Important': 'Important',
+                            '[Gmail]/Spam':      'Spam',
+                            '[Gmail]/Trash':     'Trash',
+                            '[Gmail]/All Mail':  'Archive',
+                            }.get(folder, folder)
+
+
+
