@@ -1,0 +1,20 @@
+# man notmuch-config
+
+[database]
+# path is by default ~/mail
+#path=
+
+[user]
+name=Gianni Van Hoecke
+# primary_email is set in $EMAIL
+#primary_email=
+
+[new]
+tags=unread;
+ignore=
+
+[search]
+exclude_tags=deleted;spam;
+
+[maildir]
+synchronize_flags=true
