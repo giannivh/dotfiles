@@ -1,0 +1,12 @@
+# attachments
+set mailcap_path=~/.config/neomutt/mailcap
+auto_view text/html
+alternative_order text/plain text/html
+bind attach <return> view-mailcap
+
+# press <enter> in the pager to view first attachment
+# useful for quickly seeing html
+macro pager <return> "v<return>q"
+
+# save attachments to directory
+macro attach s <save-entry><bol>~/Downloads/<eol>

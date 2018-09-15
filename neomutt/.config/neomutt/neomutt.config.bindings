@@ -1,0 +1,29 @@
+# vim-like bindings
+bind index,pager g noop
+bind pager gg top
+bind pager G bottom
+bind alias,index,browser,query gg first-entry
+bind alias,index,browser,query G last-entry
+bind pager j next-line
+bind pager k previous-line
+bind pager \Cj next-entry
+bind pager \Ck previous-entry
+bind index za collapse-thread
+bind index D delete-thread
+bind alias,index,pager,browser,query \Cd half-down
+bind alias,index,pager,browser,query \Cu half-up
+bind index,pager y group-reply
+
+# sidebar bindings
+bind index <left> sidebar-prev          # got to previous folder in sidebar
+bind index <right> sidebar-next         # got to next folder in sidebar
+bind index <space> sidebar-open         # open selected folder from sidebar
+
+# this is experimental!
+# esc+5 to parse composed email as markdown and send as text/html
+# downside is then this will not have a text/plain part
+# but people are looking at this: <https://github.com/neomutt/neomutt/issues/587>
+# it also mangles quotes, you lose the indent depth
+# see also: <http://nosubstance.me/post/mutt-secret-sauce/>
+# and: <https://github.com/oblitum/dotfiles/blob/ArchLinux/.local/bin/MIMEmbellish>
+macro compose \e5 "F nom convert \ny^T^Utext/html; charset=utf-8\n"

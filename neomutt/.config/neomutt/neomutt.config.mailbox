@@ -1,0 +1,67 @@
+# "+" substitutes for `folder`
+set mbox_type=Maildir
+
+# in seconds
+set mail_check=2
+
+# composing
+set forward_format="Fwd: %s"
+set mime_forward                        # when forwarding, include attachments
+set mime_forward_rest                   # ''
+set attribution="\n\nOn %d, %n wrote:"  # format of quoting header
+set reply_to                            # reply to Reply to: field
+set reverse_name                        # reply as whomever it was to
+set use_from                            # set the From: header
+set fast_reply                          # don't prompt for forward subject or to/subject on reply
+set include                             # always quote message in reply
+set forward_quote                       # forward messages as quote
+set send_charset="utf-8"
+set editor="vim"
+
+# seems to be more consistent quoting regexp
+set quote_regexp="^(    ).+"
+
+# index interface
+set mail_check_stats                    # poll read/unread/etc counts
+set sidebar_visible
+set sidebar_width=30
+set sidebar_format="%B%?F? [%F]?%* %?N?%N/?%S"
+set index_format="[%Z] %-10g %{%b %d}  %-20.20F  %s"
+set status_format="-%f %V%>-"
+set sort=threads
+set sort_aux=reverse-last-date-received
+
+# pager interface
+set pager_index_lines=15                # number of index lines to show
+set pager_context=5                     # lines of context
+set pager_stop                          # don't jump to the next email at end of current one
+
+# suppress "press any key to continue"
+unset wait_key
+
+# faster switching of mailboxes
+set sleep_time=0
+
+# go to first entry instead of first unread entry
+# when loading a folder
+folder-hook . 'push <first-entry>'
+
+# delete mail and mark as read
+macro index,pager d ":set resolve=no\n<clear-flag>N<tag-prefix><delete-message><sync-mailbox>:set resolve=yes\n"
+
+# notifications
+# unfortunately these don't have access to info like subjects or senders
+set new_mail_command="notify-send --icon='~/.config/neomutt/neomutt.png' 'New email' '%n new, %u unread.' &"
+
+# don't ask for delete confirmation
+set delete = yes
+
+# move without confirming
+set confirmappend = no
+
+# don't reply to self
+unset reply_self
+
+# incluse text on reply/forward
+set include = yes
+set forward_quote = yes

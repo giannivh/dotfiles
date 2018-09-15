@@ -1,0 +1,21 @@
+# https://www.neomutt.org/feature/notmuch
+
+# search
+# `man notmuch-search-terms` for syntax
+macro index,pager S "<vfolder-from-query>"
+
+# add/remove tags
+# use `-<TAG>` to remove tag
+bind index,pager Y modify-labels
+
+# filter tags
+bind index,pager Y modify-labels
+macro index \Cy "<vfolder-from-query>tag:" "Limit view to tag"
+
+# b/c we're using notmuch virtual folders,
+# re-bind `c` from <change-folder>
+bind index,pager c change-vfolder
+
+# shortcuts to folders
+macro index,pager gi "<change-vfolder>INBOX<Enter>"
+macro index,pager ga "<change-vfolder>Archive<Enter>"

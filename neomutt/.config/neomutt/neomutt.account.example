@@ -1,0 +1,47 @@
+#
+# This is an example Gmail account
+#
+
+# reset
+unvirtual-mailboxes *
+
+unset record
+set postponed=~/mail/myaccount/Drafts
+set trash=~/mail/myaccount/Trash
+
+# to use notmuch's tagging features,
+# use virtual-mailboxes instead of mailboxes
+set virtual_spoolfile # use first defined virtual-mailbox as spool
+virtual-mailboxes "Inbox" "notmuch://?query=folder:myaccount/INBOX"
+virtual-mailboxes "Archive" "notmuch://?query=folder:myaccount/Archive"
+virtual-mailboxes "Sent" "notmuch://?query=folder:myaccount/Sent"
+virtual-mailboxes "Spam" "notmuch://?query=folder:myaccount/Spam"
+virtual-mailboxes "Trash" "notmuch://?query=folder:myaccount/Trash"
+virtual-mailboxes "Drafts" "notmuch://?query=folder:myaccount/Drafts"
+
+# smtp
+source "gpg -dq $HOME/.my-pwds.gpg |"
+set smtp_authenticators = 'gssapi:login'
+set smtp_url=smtp://$my_user:$my_pass@smtp.gmail.com:587
+set smtp_pass=$my_pass
+set ssl_force_tls
+set ssl_starttls
+
+# composing
+set realname="My Name"
+set from="myaccount@gmail.com"
+
+# HTML signature
+#set signature = ~/mail/signature.html
+#set content_type = text/html
+#set editor = ~/.config/neomutt/neomutt_html_editor.sh
+
+# no signature
+unset signature
+unset content_type
+set editor = vim
+
+# custom macros
+
+# move email to Archive and mark as read
+macro index,pager A ":set resolve=no\n<clear-flag>N<tag-prefix><save-message>+myaccount/Archive\n<sync-mailbox>:set resolve=yes\n"

@@ -1,0 +1,16 @@
+#
+# Config
+#
+
+source ~/.config/neomutt/neomutt.config.mailbox
+source ~/.config/neomutt/neomutt.config.colors
+source ~/.config/neomutt/neomutt.config.addresses
+source ~/.config/neomutt/neomutt.config.attachments
+source ~/.config/neomutt/neomutt.config.bindings
+source ~/.config/neomutt/neomutt.config.notmuch
+
+#
+# Accounts
+#
+
+source ~/.config/neomutt/neomutt.config.accounts

@@ -1,0 +1,8 @@
+# addresses
+# to add an address, either:
+# - manually add it: `alias nickname Long Name <my-friend@domain.tld>`
+# - press `a` when that person's email is selected
+set alias_file=~/Private/neomutt/addresses
+set sort_alias=alias                    # sort by name alphabetically
+set reverse_alias                       # display aliased names when available
+source $alias_file

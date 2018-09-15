@@ -1,0 +1,23 @@
+# mail location
+set folder=~/mail/
+
+# folders
+folder-hook personal/* source ~/Private/neomutt/neomutt.account.personal
+folder-hook work/* source ~/Private/neomutt/neomutt.account.work
+folder-hook mailinglist/* source ~/Private/neomutt/neomutt.account.mailinglist
+
+# default account
+source ~/Private/neomutt/neomutt.account.personal
+
+# macros for switching accounts
+macro index,pager <Esc>1 '<enter-command>source ~/Private/neomutt/neomutt.account.personal<enter><change-folder>notmuch://?query=folder:personal/INBOX<enter>'
+macro index,pager <Esc>2 '<enter-command>source ~/Private/neomutt/neomutt.account.work<enter><change-folder>notmuch://?query=folder:work/INBOX<enter>'
+macro index,pager <Esc>3 '<enter-command>source ~/Private/neomutt/neomutt.account.mailinglist<enter><change-folder>notmuch://?query=folder:mailinglist/INBOX<enter>'
+
+# use tab to switch between accounts
+macro generic \Cx| "<enter-command>source"
+macro generic \Cx& "<enter-command>macro index \\t \"\\Cx"
+macro index,pager <tab> "\Cx1"    # default change to account 1, this will be redefined once pressed
+macro generic \Cx0 "\Cx| ~/Private/neomutt/neomutt.account.personal\"\n\Cx&1\"<enter><change-folder>notmuch://?query=folder:personal/INBOX<enter>"
+macro generic \Cx1 "\Cx| ~/Private/neomutt/neomutt.account.work\"\n\Cx&2\"<enter><change-folder>notmuch://?query=folder:work/INBOX<enter>"
+macro generic \Cx2 "\Cx| ~/Private/neomutt/neomutt.account.mailinglist\"\n\Cx&0\"<enter><change-folder>notmuch://?query=folder:mailinglist/INBOX<enter>"
