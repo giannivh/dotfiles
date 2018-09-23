@@ -1,16 +1,16 @@
+import subprocess
 from os.path import expanduser
 
 home = expanduser("~")
-offlineimap_location = "%s/.config/offlineimap" % home
+offlineimap_location = "%s/Private/offlineimap" % home
 
-def file_get_contents(filename):
-    with open(filename) as f:
-        return f.read()
+def decrypt(filename):
+    return subprocess.check_output(["gpg", "--quiet", "--batch", "--decrypt", filename]).strip()
 
 def mailuser(account):
-    path = "%s/imap-%s-user" % (offlineimap_location, account)
-    return file_get_contents(path)
+    path = "%s/imap-%s-user.gpg" % (offlineimap_location, account)
+    return decrypt(path)
 
 def mailpass(account):
-    path = "%s/imap-%s-pass" % (offlineimap_location, account)
-    return file_get_contents(path)
+    path = "%s/imap-%s-pass.gpg" % (offlineimap_location, account)
+    return decrypt(path)
