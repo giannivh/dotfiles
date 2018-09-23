@@ -1,7 +1,9 @@
-# Load the config files
-for config (~/.config/zsh/**/*.zsh) source $config
+# Load config files
+for config in ~/.config/zsh/**/*.zsh; do
+ source "$config"
+done
 
-# Load private config, if any
-if [ -e ~/.zsh_private ]; then
-    source ~/.zsh_private
-fi
+# Load private config files
+for config in ~/Private/zsh/**/*.zsh; do
+  source "$config"
+done
