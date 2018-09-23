@@ -39,6 +39,7 @@ Plug 'tpope/vim-sensible'
 Plug 'mhinz/vim-signify'
 Plug 'sukima/xmledit'
 Plug 'vim-airline/vim-airline'
+Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
 
 " ------------------------------------------------------------------------------
@@ -206,3 +207,9 @@ autocmd Filetype yaml setlocal ts=2 sts=2 sw=2
 " ------------------------------------------------------------------------------
 
 autocmd BufWritePost .vimrc source $MYVIMRC
+
+" ------------------------------------------------------------------------------
+" Javacomplete2
+" ------------------------------------------------------------------------------
+
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
