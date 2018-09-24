@@ -51,7 +51,7 @@ macro index,pager d ":set resolve=no\n<clear-flag>N<tag-prefix><delete-message><
 
 # notifications
 # unfortunately these don't have access to info like subjects or senders
-set new_mail_command="notify-send --icon='~/.config/neomutt/neomutt.png' 'New email' '%n new, %u unread.' &"
+set new_mail_command="/bin/sh $HOME/.config/neomutt/new_mail_command.sh '%n new, %u unread.' &"
 
 # don't ask for delete confirmation
 set delete = yes
@@ -62,6 +62,6 @@ set confirmappend = no
 # don't reply to self
 unset reply_self
 
-# incluse text on reply/forward
+# include text on reply/forward
 set include = yes
 set forward_quote = yes
