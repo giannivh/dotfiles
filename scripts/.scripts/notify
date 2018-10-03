@@ -1,0 +1,107 @@
+#!/usr/bin/env bash
+
+#############################################################
+##                                                         ##
+## Cross platform notification wrapper script              ##
+##                                                         ##
+## Dependencies:                                           ##
+##    macOS terminal-notifier                              ##
+##    linux notify-send                                    ##
+##                                                         ##
+## Author:  Gianni Van Hoecke <gianni@giannivanhoecke.com> ##
+## Date:    2018-09-24                                     ##
+##                                                         ##
+#############################################################
+
+#  ____________________________________________________________________________________________________________________
+# |                                                                                                                    |
+# |                                                                                                     .:: CONFIG ::. |
+# |____________________________________________________________________________________________________________________|
+
+ME=$(basename "${0}")
+VERSION="20180929"
+AUTHOR="Gianni Van Hoecke <gianni@giannivanhoecke.com>"
+
+#  ____________________________________________________________________________________________________________________
+# |                                                                                                                    |
+# |                                                                                                  .:: FUNCTIONS ::. |
+# |____________________________________________________________________________________________________________________|
+
+log() {
+  printf "%s\\n" "${1}"
+}
+
+err() {
+  printf "\\e[38;5;9m%s\\e[0m\\n" "${1}" >&2
+}
+
+showVersion() {
+  log "${ME} version ${VERSION}"
+  log "By ${AUTHOR}"
+}
+
+showHelpOption() {
+  log "  -${1}  ${2}"
+}
+
+showHelp() {
+  showVersion
+  log ""
+  log "Usage: ${ME} [-a application] [-t title] [-m message] [-i icon_location]"
+  log ""
+  log "  Send a notification"
+  log ""
+  log "Help Options:"
+  showHelpOption "h" "Show help"
+  showHelpOption "v" "Show version"
+  log ""
+  log "Application Options:"
+  showHelpOption "a" "The origin of the notification, eg. app name. This defaults to 'Terminal'."
+  showHelpOption "t" "The title of the notification."
+  showHelpOption "m" "The message body of the notification."
+  showHelpOption "i" "Specify an image PATH to display. Do not use the tilde-prefix."
+  log ""
+  log "Example:"
+  log "  $ ${ME} -a \"Neomutt\" -t \"New mail\" -m \"You have 1 new message\" -i \"\${HOME}/icon.png\""
+  log ""
+}
+
+#  ____________________________________________________________________________________________________________________
+# |                                                                                                                    |
+# |                                                                                 .:: PARSE COMMAND LINE OPTIONS ::. |
+# |____________________________________________________________________________________________________________________|
+
+app="Terminal"
+
+while getopts :a:t:m:i:hv opt; do
+  case $opt in
+    a ) app="${OPTARG}";;
+    t ) title="${OPTARG}";;
+    m ) message="${OPTARG}";;
+    i ) icon="${OPTARG}";;
+    h ) showHelp; exit;;
+    v ) showVersion; exit;;
+    \?) err "Unknown option: -${OPTARG}"; exit 1;;
+    : ) err "Missing option argument for -${OPTARG}"; exit 1;;
+    * ) err "Unimplemented option: -${OPTARG}"; exit 1;;
+  esac
+done
+
+shift $((OPTIND-1))
+
+#  ____________________________________________________________________________________________________________________
+# |                                                                                                                    |
+# |                                                                                                    .:: EXECUTE ::. |
+# |____________________________________________________________________________________________________________________|
+
+tput bel 
+
+case "$(uname -s)" in
+  Darwin)
+    terminal-notifier -activate "com.googlecode.iterm2" ${app:+-title "${app}"} ${title:+-subtitle "${title}"} ${message:+-message "${message}"} ${icon:+-appIcon "${icon}"} &
+    ;;
+  *)
+    if [[ ! -z "${title}" ]]; then title="${app}: ${title}"; else title="${app}"; fi
+    notify-send --urgency=normal ${icon:+--icon="${icon}"} "${title}" "${message}" &
+    ;;
+esac

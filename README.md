@@ -12,7 +12,16 @@ Clone the repo
 
 `$ git clone https://github.com/giannivh/dotfiles .dotfiles`
 
-*Important: in order for stow to work, the repo needs to be cloned in the $HOME directory!*
+*Important: in order for stow to work, the repo needs to be cloned in the `$HOME` directory!*
+
+Some dotfiles require scripts in `~/.scripts`, so stow them first:
+
+```
+$ cd .dotfiles
+$ stow scripts
+```
+
+Make sure `~/.scripts` is inside your `$PATH`.
 
 ## Usage
 
