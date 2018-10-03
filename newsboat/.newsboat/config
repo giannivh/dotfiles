@@ -1,0 +1,3 @@
+include ~/.newsboat/conf/settings.conf
+include ~/.newsboat/conf/bindings.conf
+include ~/.newsboat/conf/colors.conf

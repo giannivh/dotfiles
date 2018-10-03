@@ -1,0 +1,81 @@
+#
+# Blog
+#
+
+      http://localhost:0001 "~# Blog"
+http://waitbutwhy.com/feed "Blog"
+https://www.everydaycommentary.com/www.everydaycommentary.com?format=RSS "Blog"
+      http://localhost:0002 "~ "
+
+#
+# Fun
+#
+
+      http://localhost:0003 "~# Fun"
+http://www.raaskalderij.be/feed/ "Fun"
+http://xkcd.com/rss.xml "Fun"
+http://feeds.feedburner.com/DeRechtzetting "Fun"
+http://www.theonion.com/content/feeds/daily "Fun"
+      http://localhost:0004 "~ "
+
+#
+# News
+#
+
+      http://localhost:0005 "~# News"
+http://feeds.reuters.com/reuters/topNews?irpc=69 "News"
+http://feeds.feedburner.com/ApacheGratisArtikels "News"
+http://www.standaard.be/rss/section "News"
+http://foreignpolicy.com/feed/ "News"
+http://www.tijd.be/rss/nieuws.xml "News"
+      http://localhost:0006 "~ "
+
+#
+# Science
+#
+
+      http://localhost:0007 "~# Science"
+http://www.popsci.com/rss.xml "Science"
+http://www.esa.int/rss/TopNews.xml "Science"
+https://earthobservatory.nasa.gov/feeds/earth-observatory.rss "Science"
+http://news.nationalgeographic.com/index.rss "Science"
+      http://localhost:0008 "~ "
+
+#
+# Security
+#
+
+      http://localhost:0009 "~# Security"
+http://feeds.feedburner.com/tripwire-state-of-security "Security"
+http://nakedsecurity.sophos.com/feed/ "Security"
+http://www.csoonline.com/blog/salted-hash-top-security-news/index.rss "Security"
+http://threatpost.com/feed "Security"
+http://www.infosecisland.com/rss.html "Security"
+http://www.theregister.co.uk/security/headlines.atom "Security"
+http://feeds2.feedburner.com/HelpNetSecurity "Security"
+http://thehackernews.com/feeds/posts/default "Security"
+http://krebsonsecurity.com/feed/ "Security"
+      http://localhost:0010 "~ "
+
+#
+# Sports
+#
+
+      http://localhost:0011 "~# Sports"
+http://sports.espn.go.com/espn/rss/nhl/news "Sports"
+      http://localhost:0012 "~ "
+
+#
+# Technology
+#
+
+      http://localhost:0013 "~# Technology"
+http://www.engadget.com/rss.xml "Technology"
+http://rss.slashdot.org/Slashdot/slashdot "Technology"
+http://news.ycombinator.com/rss "Technology"
+https://lifehacker.com/rss "Technology"
+http://www.tweakers.net/feeds/nieuws.xml "Technology"
+https://gizmodo.com/rss "Technology"
+http://bitcannon.net/index.xml "Technology"
+http://feeds.feedburner.com/ItsFoss "Technology"
+      http://localhost:0014 "~ "
