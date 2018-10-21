@@ -5,6 +5,7 @@
       http://localhost:0001 "~# Blog"
 http://waitbutwhy.com/feed "Blog"
 https://www.everydaycommentary.com/www.everydaycommentary.com?format=RSS "Blog"
+https://feeds.feedburner.com/codinghorror?format=xml "Blog"
       http://localhost:0002 "~ "
 
 #
