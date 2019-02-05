@@ -11,3 +11,7 @@ windows:
           - neomutt
         focus: true
     focus: true
+  - window_name: newsboat
+    panes:
+      - shell_command:
+          - newsboat
