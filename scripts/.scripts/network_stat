@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+NETWORK_INTERFACE="$1"
+
+# first sample
+TOTAL_DOWN_SAMPLE1=$(cat /sys/class/net/${NETWORK_INTERFACE}/statistics/rx_bytes)
+TOTAL_UP_SAMPLE1=$(cat /sys/class/net/${NETWORK_INTERFACE}/statistics/tx_bytes)
+
+# sleep 1 second so we can get updated values
+sleep 1
+
+# second sample
+TOTAL_DOWN_SAMPLE2=$(cat /sys/class/net/${NETWORK_INTERFACE}/statistics/rx_bytes)
+TOTAL_UP_SAMPLE2=$(cat /sys/class/net/${NETWORK_INTERFACE}/statistics/tx_bytes)
+
+# calculate difference
+DOWN_DIFF=$(echo $((TOTAL_DOWN_SAMPLE2 - TOTAL_DOWN_SAMPLE1)) )
+UP_DIFF=$(echo $((TOTAL_UP_SAMPLE2 - TOTAL_UP_SAMPLE1)) )
+
+# total traffic in GiB
+TOTAL_DOWN=$(numfmt --to=iec-i --format='%.2f' <<<"${TOTAL_DOWN_SAMPLE2}")
+TOTAL_UP=$(numfmt --to=iec-i --format='%.2f' <<<"${TOTAL_UP_SAMPLE2}")
+
+# speed in KiB/s
+SPEED_DOWN=$(numfmt --to=iec-i --format='%.2f' <<<"${DOWN_DIFF}")
+SPEED_UP=$(numfmt --to=iec-i --format='%.2f' <<<"${UP_DIFF}")
+
+# print
+echo "↓ ${SPEED_DOWN}/s ↑ ${SPEED_UP}/s | ⇩ ${TOTAL_DOWN} ⇧ ${TOTAL_UP}"
