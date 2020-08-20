@@ -1,0 +1,7 @@
+configuration {
+	modi: "window,ssh,drun,combi";
+	show-icons: true;
+	icon-theme: "Papirus";
+	combi-modi: "window,drun,ssh";
+	theme: "gruvbox-dark-hard";
+}
