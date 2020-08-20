@@ -14,3 +14,9 @@ cache.db
 cache.db.lock
 history.cmdline
 history.search
+
+##################################################
+# autorandr
+##################################################
+
+autorandr/.config/autorandr/*/setup
