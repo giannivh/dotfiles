@@ -1,1 +1,1 @@
-export PATH="${HOME}/.scripts:${PATH}"
+export PATH="${HOME}/.ebcli-virtual-env/executables:${HOME}/.scripts:${HOME}/.local/bin:${PATH}"

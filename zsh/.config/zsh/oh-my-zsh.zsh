@@ -13,4 +13,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git colored-man-pages colorize sudo)
 
+export DISABLE_AUTO_TITLE="true"
+
 source $ZSH/oh-my-zsh.sh
