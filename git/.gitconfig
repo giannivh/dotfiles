@@ -30,3 +30,6 @@
     cp = cherry-pick
 [rerere]
     enabled = true
+[diff]
+	context = 5
+[global]
