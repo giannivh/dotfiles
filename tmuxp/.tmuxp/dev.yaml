@@ -1,0 +1,37 @@
+session_name: 'dev'
+windows:
+  - window_name: IntelliJ
+    start_directory: "${HOME}"
+    layout: d55d,238x59,0,0,0
+    options:
+      automatic-rename: 'off'
+    panes:
+      - focus: true
+        shell_command: 
+  - window_name: WildFly
+    start_directory: "${WILDFLY_LOCATION}"
+    layout: c893,238x59,0,0[238x55,0,0,1,238x3,0,56,2]
+    options:
+      automatic-rename: 'off'
+    panes:
+      - lnav standalone/log/server.log
+      - focus: 'true'
+        shell_command: 
+  - window_name: JBoss
+    start_directory: "${JBOSS_LOCATION}"
+    layout: c893,238x59,0,0[238x55,0,0,1,238x3,0,56,2]
+    options:
+      automatic-rename: 'off'
+    panes:
+      - lnav server/default/log/server.log
+      - focus: true
+        shell_command: 
+  - window_name: Workspace
+    start_directort: "${HOME}"
+    layout: d560,238x59,0,0,3
+    focus: true
+    options:
+      automatic-rename: 'off'
+    panes:
+      - focus: true
+        shell_command: 
