@@ -1,0 +1,5 @@
+# fix palm scrolling while typing
+synclient PalmMinZ=100
+
+# set background image
+feh --no-fehbg --bg-fill /home/gvhoecke/Pictures/Wallpapers/arch-03.jpg

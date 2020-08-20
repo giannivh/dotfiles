@@ -43,7 +43,7 @@ If any of my dotfiles requires some info, it's explained below.
 
 ### ZSH
 
-The config sources `~/Private/zsh/**/*.zsh`. I store my project specific aliases and other stuff I don't want to have public.
+The config sources `~/Private/zsh/**/*.zsh`. I store my project specific aliases and other stuff I don't want to have public there.
 
 ### VIM
 
