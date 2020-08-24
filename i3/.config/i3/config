@@ -48,6 +48,9 @@ smart_borders on
 exec xrdb -merge $HOME/.Xresources
 exec xrdb -merge $HOME/.Xdefaults
 
+# disable automatic screen lock
+exec_always --no-startup-id ${HOME}/.config/i3/disable-screen-lock.sh & 
+
 
 
 #  ____________________________________________________________________________________________________________________
