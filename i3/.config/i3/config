@@ -259,6 +259,9 @@ bindsym $mod+d exec rofi -dpi 192 -show combi window#drun#ssh -show-icons
 # use search hotkey to use rofi as a calculator
 bindsym XF86Search exec rofi -dpi 192 -show calc -modi calc -no-show-match -no-sort
 
+# open greenclip (clipboard manager) with rofi
+bindsym $mod+Ctrl+v exec rofi -dpi 192 -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+
 
 
 #  ____________________________________________________________________________________________________________________
@@ -306,4 +309,6 @@ exec_always --no-startup-id feh --bg-fill ${HOME}/Pictures/Wallpapers/arch-03.jp
 # launch polybar
 exec_always --no-startup-id ${HOME}/.config/polybar/launch.sh &
 
+# reset greenclip (clipboard manager)
+exec_always --no-startup-id ${HOME}/.config/i3/greenclip-reset.sh &
 
