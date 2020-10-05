@@ -19,6 +19,7 @@
 #    :white_check_mark: test     (adding or refactoring tests)
 #    :wrench:           chore    (updating tasks, configuration)
 #    :speech_balloon:   i18n     (translation)
+#    :tada:             init     (begin a project)
 # ----------------------------------------------------------------------
 # Remember to
 #    Capitalize the subject line
