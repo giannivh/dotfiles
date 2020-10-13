@@ -205,7 +205,7 @@ animation-charging-framerate = 750
 
 [module/electricity-usage]
 type = custom/script
-interval = 5
+interval = 60
 
 exec = ~/.config/polybar/electricity-usage.sh
 
