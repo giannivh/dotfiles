@@ -290,6 +290,9 @@ exec --no-startup-id protonmail-bridge &
 # launch gnome auth agent, to be able to enter credentials when needed
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
+# launch Polychromatic applet, for my BlackWidow keyboard
+exec --no-startup-id polychromatic-tray-applet &
+
 
 
 #  ____________________________________________________________________________________________________________________
